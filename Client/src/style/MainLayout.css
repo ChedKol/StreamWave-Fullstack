@@ -1,0 +1,134 @@
+/* הגדרות כלליות לכל הדף */
+
+.layout-container {
+    display: flex;
+    flex-wrap: wrap; /* מאפשר לנגן לרדת שורה מתחת לסיידבר והתוכן */
+    height: 100vh;
+    width: 100vw;
+    background-color: #000;
+    color: white;
+    overflow: hidden;
+}
+
+/* סיידבר - תפריט צד */
+.sidebar {
+    width: 240px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 12px;
+    border-right: 1px solid #1f1f1f;
+    height: calc(100vh - 90px); /* גובה המסך פחות גובה הנגן */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 12px 32px;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-menu, .nav-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 24px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    color: #b3b3b3;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.2s;
+    background: none;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: white;
+    background-color: #1a1a1a;
+}
+
+/* אזור המשתמש למטה בסיידבר */
+.sidebar-footer {
+    margin-top: auto;
+    padding: 12px;
+    border-top: 1px solid #1f1f1f;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    background-color: #006666;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.sign-out-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* התוכן המרכזי - כאן הקסם שמותח את הדף */
+.main-content {
+    flex: 1; /* אומר לתוכן להימתח ולמלא את כל הצד הימין */
+    height: calc(100vh - 90px);
+    overflow-y: auto;
+    background: linear-gradient(to bottom, #121212, #000);
+}
+
+/* הנגן התחתון */
+.player-bar {
+    width: 100vw;
+    height: 90px;
+    background-color: #000;
+    border-top: 1px solid #1f1f1f;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 30%;
+}
+
+.player-info img {
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
+    object-fit: cover;
+}

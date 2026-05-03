@@ -1,0 +1,150 @@
+.now-playing-page-layout {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: #080808;
+    overflow: hidden;
+    /* הסיידבר המקורי של האפליקציה יתפוס את מקומו הטבעי מימין */
+}
+
+.now-playing-main-content {
+    flex-grow: 1; /* לוקח את כל השטח שמשמאל לסיידבר */
+    display: flex;
+    height: 100%;
+    position: relative;
+}
+
+/* התקליט - מרכוז בשטח הפנוי שנותר */
+.vinyl-display-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vinyl-record {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #222 0%, #050505 100%);
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.record-groove {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.02);
+}
+
+.record-center-art {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* פאנל השיר (צד שמאל של המסך) */
+.song-details-sidebar {
+    width: 420px;
+    height: 100%;
+    background: #0a0a0a;
+    border-right: 1px solid #1a1a1a;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.artist-hero-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.artist-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.title-and-actions h1 { font-size: 2.5rem; margin: 0; color: #fff; }
+.title-and-actions h3 { color: #666; margin: 5px 0 15px; }
+
+.meta-icons { display: flex; gap: 20px; color: #444; margin-bottom: 30px; }
+
+.lyrics-scroller { flex: 1; overflow-y: auto; color: #444; }
+.active-line { color: #fff; font-weight: bold; }
+.player-tabs { display: flex; gap: 15px; margin-bottom: 15px; font-size: 14px; }
+
+/* פוטר שליטה */
+.playback-footer { margin-top: auto; padding-top: 20px; }
+
+/* התיקון לסליידר - כיוון רגיל משמאל לימין */
+.progress-slider-fix {
+    width: 100%;
+    height: 4px;
+    appearance: none;
+    background: #222;
+    border-radius: 2px;
+    outline: none;
+    direction: ltr; /* קריטי למנוע היפוך */
+}
+
+.progress-slider-fix::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #00f5e1;
+    border-radius: 50%;
+}
+
+.time-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #555;
+    margin-top: 8px;
+}
+
+.controls-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.play-circle {
+    width: 60px;
+    height: 60px;
+    background: #00f5e1;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-btns { display: flex; align-items: center; gap: 20px; }
+.sub-btns, .vol-btns { display: flex; align-items: center; gap: 12px; width: 80px; color: #444; }
+.vol-btns { justify-content: flex-end; }
+.vol-slider { width: 50px; accent-color: #00f5e1; }
+
+.figma-bg-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(0, 245, 225, 0.1), transparent 70%);
+    pointer-events: none;
+}
+
+.figma-close-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    z-index: 100;
+}

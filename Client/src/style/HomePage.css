@@ -1,0 +1,264 @@
+#home-page-container {
+    background-color: #000000; /* שחור עמוק כמו בפיגמה */
+    color: white;
+    min-height: 100vh;
+    direction: rtl;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    padding: 2rem 3rem;
+}
+
+/* Header */
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+}
+
+.greeting-text { 
+    font-size: 2.5rem; 
+    font-weight: 800;
+    margin: 0; 
+    letter-spacing: -1px;
+}
+
+.subtitle-text { 
+    color: #a7a7a7; 
+    font-size: 1.1rem;
+    margin-top: 0.5rem; 
+}
+
+/* Featured Banner */
+.featured-banner {
+    position: relative;
+    height: 350px;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 4rem;
+    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.featured-banner:hover .banner-img { transform: scale(1.05); }
+
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+}
+
+.banner-content {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    left: 3rem;
+}
+
+.trending-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #00CEEA; /* צבע המותג שלך */
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.banner-title { 
+    font-size: 4rem; 
+    font-weight: 900;
+    margin: 0 0 15px 0; 
+    line-height: 1;
+}
+
+.banner-description { 
+    font-size: 1.25rem; 
+    color: #d1d1d1; 
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+
+.play-now-btn {
+    background-color: #00CEEA;
+    color: #000;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.play-now-btn:hover {
+    transform: scale(1.05);
+    background-color: #00e5ff;
+}
+
+/* Sections */
+.home-section { margin-bottom: 4rem; }
+
+.section-title-wrapper { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    margin-bottom: 0.5rem; 
+}
+
+.section-title-wrapper h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.section-subtitle { 
+    color: #a7a7a7; 
+    font-size: 1rem;
+    margin-bottom: 2rem; 
+}
+
+.icon-primary { color: #00CEEA; }
+
+/* Song Cards Grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.song-card-figma {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 16px;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.song-card-figma:hover { 
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-8px);
+    border-color: rgba(0, 206, 234, 0.3);
+}
+
+.image-wrapper img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.song-name { 
+    margin: 0; 
+    font-size: 1.1rem; 
+    font-weight: 600;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+.artist-name { 
+    color: #a7a7a7; 
+    font-size: 0.9rem; 
+    margin-top: 6px; 
+}
+
+/* Artists Grid */
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 32px;
+}
+
+.artist-card-figma { 
+    text-align: center; 
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.artist-card-figma:hover { transform: scale(1.05); }
+
+.artist-image-wrapper img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border: 4px solid transparent;
+    transition: border-color 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.artist-card-figma:hover img { border-color: #00CEEA; }
+
+.artist-label { 
+    font-size: 1.1rem;
+    font-weight: 600; 
+    color: white;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+#home-page-container {
+    background-color: #000000;
+    color: white;
+    min-height: 100vh;
+    direction: rtl;
+    font-family: 'Inter', sans-serif; /* פונט עגול ומודרני */
+    padding: 2rem 3rem;
+    margin-right: 260px; /* זה ימנע מהסיידבר להסתיר את התוכן */
+}
+
+/* הסרת כפתור ההתנתקות שנותר */
+.logout-btn {
+    display: none !important;
+}
+
+/* Header תיקון ה- */
+.home-header {
+    display: flex;
+    flex-direction: column; /* מסדר את הטקסט נכון */
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    margin-top: 1rem;
+}
+
+.greeting-text { 
+    font-size: 2.8rem; 
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin: 0;
+}
+
+/* Featured Banner - תיקון המיקום של הטקסט */
+.featured-banner {
+    position: relative;
+    height: 380px;
+    border-radius: 28px;
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+.banner-content {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem; /* בגלל RTL */
+    text-align: right;
+}
+
+.banner-title { 
+    font-size: 4.5rem; 
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+

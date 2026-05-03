@@ -1,0 +1,251 @@
+/* Login.css - גרסה משודרגת (יחס 60/40) */
+
+:root {
+    --primary-color: #3b82f6;
+    --bg-dark: #000000;
+    --text-main: #ffffff;
+    --text-muted: #a1a1aa;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --input-bg: rgba(255, 255, 255, 0.03);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-page-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: var(--bg-dark);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* --- Hero Section (שינוי ל-60%) --- */
+.hero-section {
+    display: none;
+    width: 60%; /* הגדלנו את התמונה */
+    height: 100%;
+    position: relative;
+}
+
+@media (min-width: 1024px) {
+    .hero-section { display: flex; }
+}
+
+.hero-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    /* גרדיאנט עמוק יותר שנותן עומק לתמונה */
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.hero-content {
+    position: absolute;
+    inset: 0;
+    padding: 5rem; /* ריווח נדיב יותר */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+}
+
+.brand-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.brand-name { 
+    font-size: 3.5rem; /* הגדלנו את הלוגו */
+    font-weight: 900; 
+    letter-spacing: -1px;
+}
+
+.hero-title { 
+    font-size: 4rem; /* כותרת מרשימה הרבה יותר */
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #fff, #999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-description { 
+    font-size: 1.4rem; 
+    color: #cbd5e1; 
+    max-width: 550px;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.whats-new-card {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    max-width: 420px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Form Section (שינוי ל-40%) --- */
+.form-section {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    background: linear-gradient(to bottom, #0a0a0a, #000);
+}
+
+@media (max-width: 1024px) {
+    .form-section { width: 100%; }
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 360px; /* צמצמנו מעט את רוחב הטופס למראה מהודק */
+}
+
+.form-header { margin-bottom: 2.5rem; text-align: left; }
+.form-header h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+.form-header p { color: var(--text-muted); font-size: 1rem; }
+
+.input-group { margin-bottom: 1.5rem; }
+.input-group label { 
+    display: block; 
+    font-size: 0.85rem; 
+    font-weight: 500;
+    margin-bottom: 0.6rem; 
+    color: #e4e4e7; 
+}
+
+.input-relative input {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1rem 1rem 1rem 3.2rem; /* יותר מרווח */
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-relative input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.input-icon {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    width: 1.2rem;
+}
+
+.submit-button {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.75rem; /* שינוי מ-Round ל-Radius מודרני */
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 2rem 0;
+    color: #3f3f46;
+}
+
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #27272a;
+}
+
+.divider span {
+    padding: 0 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.footer-text { text-align: center; font-size: 0.95rem; color: var(--text-muted); }
+.link { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+.link:hover { text-decoration: underline; }
+
+/* אייקונים */
+.icon-primary { color: var(--primary-color); width: 3rem; height: 3rem; }
+/* Login.css - עדכונים אחרונים */
+
+.brand-icon-white {
+    color: #ffffff; /* צבע לבן לאייקון הלוגו */
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.brand-name {
+    color: #ffffff; /* צבע לבן לאותיות הלוגו */
+    font-size: 3.5rem;
+    font-weight: 900;
+}
+
+/* הגדלת המלבן והוספת רווחים */
+.whats-new-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1.5rem;
+    padding: 2.5rem; /* הגדלת המלבן דרך הריווח הפנימי */
+    max-width: 480px; /* רוחב גדול יותר למלבן */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+.news-list li {
+    position: relative;
+    padding-left: 2rem; /* רווח גדול יותר לפני הנקודה */
+    color: #e2e8f0;
+    margin-bottom: 1.5rem; /* רווח גדול יותר בין המשפטים */
+    font-size: 1.15rem; /* טקסט מעט גדול וברור יותר */
+    line-height: 1.4;
+}
+
+/* הסרת האייקון המיותר */
+/* האייקון הוסר מה-JSX, כאן אנחנו רק מוודאים שאין שאריות עיצוב מציקות */
+.sparkle-icon {
+    color: var(--primary-color);
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* שאר ה-CSS שקיבלת קודם נשאר ללא שינוי */

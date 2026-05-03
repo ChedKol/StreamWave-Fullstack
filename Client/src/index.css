@@ -1,0 +1,23 @@
+.app-layout {
+  display: flex; /* מעמיד את הסרגל והתוכן זה לצד זה */
+  height: 100vh;
+  background-color: #000;
+  color: white;
+  direction: rtl;
+}
+
+.main-content {
+  flex: 1; /* לוקח את כל שאר המקום */
+  overflow-y: auto; /* מאפשר גלילה רק לתוכן */
+  background: linear-gradient(to bottom, #1db95422, #121212 30%); /* אפקט ספוטיפיי */
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #000;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-left: 1px solid #282828; /* קו מפריד */
+}

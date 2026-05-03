@@ -1,0 +1,76 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background-color: #000; width: 100%; height: 100%; overflow-x: hidden; }
+
+.register-page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+    background-color: #000;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+/* צד שמאל */
+.side-hero { flex: 1.2; position: relative; display: none; }
+@media (min-width: 1024px) { .side-hero { display: block; } }
+
+.side-hero img { width: 100%; height: 100%; object-fit: cover; }
+.hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom right, rgba(0, 238, 255, 0.15), rgba(0,0,0,0.8));
+    display: flex; align-items: center; padding: 60px;
+}
+.hero-logo { display: flex; align-items: center; gap: 12px; font-size: 1.8rem; font-weight: bold; margin-bottom: 1.5rem; }
+.hero-content h2 { font-size: 2.8rem; margin-bottom: 1rem; line-height: 1.1; }
+.hero-content p { color: #aaa; line-height: 1.6; max-width: 400px; }
+
+/* צד ימין */
+.form-container-side { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px; }
+.form-card-step { width: 100%; max-width: 400px; }
+
+/* Stepper */
+.stepper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; position: relative; }
+.stepper::before {
+    content: ''; position: absolute; top: 50%; left: 10%; right: 10%;
+    height: 2px; background: #27272a; transform: translateY(-50%); z-index: 1;
+}
+.step-dot {
+    width: 35px; height: 35px; border-radius: 50%; background: #121214; border: 2px solid #27272a;
+    display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;
+    color: #71717a; z-index: 2; transition: 0.3s;
+}
+.step-dot.active { background: #00eeff; border-color: #00eeff; color: #000; box-shadow: 0 0 15px rgba(0, 238, 255, 0.4); }
+
+/* Inputs */
+.step-content h1 { font-size: 2rem; margin-bottom: 8px; }
+.step-content p { color: #71717a; margin-bottom: 30px; font-size: 0.9rem; }
+.input-group-label { font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; color: #efefef; }
+.input-box { position: relative; margin-bottom: 20px; }
+.input-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #71717a; }
+.input-box input {
+    width: 100%; padding: 14px 15px 14px 45px; background: #121214;
+    border: 1px solid #27272a; border-radius: 10px; color: white; outline: none;
+}
+.input-box input:focus { border-color: #00eeff; }
+
+/* Buttons */
+.btn-main-cyan {
+    width: 100%; padding: 15px; background: #00eeff; border: none; border-radius: 50px;
+    color: #000; font-weight: 700; cursor: pointer; transition: 0.2s; margin-top: 10px;
+}
+.btn-main-cyan:hover { opacity: 0.9; transform: translateY(-1px); }
+.navigation-buttons { display: flex; gap: 12px; margin-top: 10px; }
+.flex-1 { flex: 1; }
+.btn-back-figma {
+    padding: 0 25px; background: #27272a; color: white; border: none; border-radius: 50px;
+    cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 600;
+}
+
+/* Upload Box */
+.custom-upload-box {
+    width: 100%; height: 160px; border: 2px dashed #27272a; border-radius: 12px;
+    background: #0a0a0a; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; margin-bottom: 30px; overflow: hidden;
+}
+.upload-placeholder { display: flex; flex-direction: column; align-items: center; gap: 10px; color: #71717a; }
+.image-preview { width: 100%; height: 100%; object-fit: cover; }

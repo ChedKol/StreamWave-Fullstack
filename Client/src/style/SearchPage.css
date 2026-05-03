@@ -1,0 +1,430 @@
+/* Container & Layout */
+.search-page-container {
+    padding: 40px 60px;
+    background-color: #000;
+    min-height: 100vh;
+    direction: rtl;
+    margin-right: 260px;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+/* Header & Breadcrumb */
+.search-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+}
+
+.genre-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    color: #b3b3b3;
+    font-size: 0.9rem;
+}
+
+.genre-breadcrumb strong {
+    color: #00CEEA;
+    font-size: 1.1rem;
+}
+
+/* Search Bar */
+.search-bar-wrapper {
+    position: relative;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.search-icon-inside {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+}
+
+.search-input-field {
+    width: 100%;
+    background: #1a1a1a;
+    border: 1px solid transparent;
+    padding: 16px 55px 16px 45px;
+    border-radius: 100px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-input-field:focus {
+    background: #252525;
+    border-color: #00CEEA;
+    box-shadow: 0 0 15px rgba(0, 206, 234, 0.1);
+}
+
+.clear-search {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+/* Genres Grid */
+.genres-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.genre-card {
+    position: relative;
+    height: 160px; /* קצת יותר גובה למראה יוקרתי */
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.genre-card:hover { 
+    transform: translateY(-5px); 
+}
+
+.genre-card img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    bottom: -15px;
+    left: -15px;
+    transform: rotate(25deg);
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.genre-card h3 {
+    padding: 20px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Genre Colors (Linear Gradients) */
+.genre-pink { background: linear-gradient(135deg, #ec4899, #831843); }
+.genre-red { background: linear-gradient(135deg, #ef4444, #7f1d1d); }
+.genre-green { background: linear-gradient(135deg, #10b981, #064e3b); } /* Folk */
+.genre-orange { background: linear-gradient(135deg, #f59e0b, #78350f); } /* Country */
+.genre-blue { background: linear-gradient(135deg, #0ea5e9, #1e3a8a); } /* Jewish */
+
+/* Results Content Animation */
+.results-wrapper {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Song List Items */
+.song-result-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.song-result-item:hover { 
+    background: rgba(255, 255, 255, 0.1); 
+}
+
+.song-result-item img { 
+    width: 55px; 
+    height: 55px; 
+    border-radius: 4px; 
+    object-fit: cover;
+}
+
+.song-info .title { 
+    font-weight: 600; 
+    font-size: 1.05rem; 
+    margin-bottom: 4px;
+}
+
+.song-info .artist { 
+    color: #b3b3b3; 
+    font-size: 0.9rem; 
+}
+
+.add-to-playlist-btn {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.add-to-playlist-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.add-to-playlist-btn.added {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    cursor: default;
+}
+
+.add-to-playlist-btn.added:hover {
+    transform: scale(1);
+}
+
+/* מודל בחירת פלייליסט */
+.playlist-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.playlist-modal {
+    background: #1a1a2e;
+    border-radius: 16px;
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 70vh;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.close-modal {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.modal-content p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 16px;
+}
+
+.playlist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.playlist-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.playlist-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+.playlist-option img {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.playlist-info h4 {
+    color: white;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+}
+
+.playlist-info p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    margin: 0;
+}
+
+.playlist-option svg {
+    color: #28a745;
+    margin-left: auto;
+}
+
+.no-playlists {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+}
+
+.breadcrumb-link {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+    color: #ffffff; /* הופך ללבן בהיר יותר כשעומדים עליו */
+    text-decoration: underline; /* אופציונלי, למראה של קישור */
+}
+
+.genre-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    color: #b3b3b3;
+    font-size: 0.9rem;
+    user-select: none; /* מונע בחירת טקסט בטעות בלחיצה מהירה */
+}
+/* כפתור הפלוס בתוך השיר */
+.add-to-playlist-btn-circle {
+    margin-right: auto; /* דוחף לצד שמאל (ב-RTL) */
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.add-to-playlist-btn-circle:hover {
+    transform: scale(1.1);
+    border-color: #00CEEA;
+    background: rgba(0, 206, 234, 0.1);
+}
+
+/* עיצוב אופציית פלייליסט כשהיא נבחרת */
+.playlist-option.is-added {
+    border-color: #28a745;
+    background: rgba(40, 167, 69, 0.1);
+}
+
+.check-icon {
+    color: #28a745;
+    margin-right: auto; /* דוחף לשמאל */
+}
+
+/* שיפור למודאל */
+.playlist-modal {
+    scrollbar-width: thin;
+    scrollbar-color: #00CEEA #1a1a2e;
+}
+/* כפתור הפלוס בשורה של השיר */
+.add-to-playlist-btn-circle {
+    margin-right: auto;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.add-to-playlist-btn-circle:hover {
+    background: rgba(0, 206, 234, 0.1);
+    border-color: #00CEEA;
+    transform: scale(1.1);
+}
+
+/* אפשרות פלייליסט שנבחרה */
+.playlist-option.is-added {
+    border: 1px solid #28a745;
+    background: rgba(40, 167, 69, 0.15);
+}
+
+.check-icon {
+    color: #28a745;
+    margin-right: auto;
+}
+
+/* פוטר המודאל וכפתור סיום */
+.modal-footer {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+}
+
+.confirm-selection-btn {
+    background-color: #00CEEA;
+    color: #000;
+    border: none;
+    padding: 10px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.confirm-selection-btn:hover {
+    transform: scale(1.05);
+    background-color: #00e5ff;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 20px;
+    color: #00CEEA;
+}
