@@ -16,6 +16,7 @@ export const Sidebar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   useEffect(() => {
+
     const fetchSidebarData = async () => {
       if (user?.userId) {
         try {

@@ -1,0 +1,177 @@
+.manage-playlists-container {
+    animation: fadeIn 0.4s ease-out;
+}
+
+.playlists-admin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.playlist-accordion-item {
+    background-color: #121212;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.playlist-accordion-item.expanded {
+    border-color: #00CEEA;
+    box-shadow: 0 4px 20px rgba(0, 206, 234, 0.1);
+}
+
+.playlist-main-row {
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.playlist-main-row:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.playlist-main-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.playlist-admin-img {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.playlist-text-meta h3 {
+    margin: 0;
+    font-size: 17px;
+    color: white;
+    font-weight: 700;
+}
+
+.playlist-text-meta span {
+    font-size: 13px;
+    color: #7a7a7a;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.playlist-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.action-btn.delete-btn {
+    background: transparent;
+    border: none;
+    color: #7a7a7a;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.action-btn.delete-btn:hover {
+    color: #ff4d4d;
+    background-color: rgba(255, 77, 77, 0.1);
+}
+
+.expand-icon {
+    color: #00CEEA;
+}
+
+/* החלק המורחב */
+.playlist-details-expanded {
+    padding: 24px;
+    background-color: #0a0a0a;
+    border-top: 1px solid #1a1a1a;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.details-top-bar {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background-color: #121212;
+    border-radius: 12px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #b3b3b3;
+}
+
+.meta-item strong {
+    color: white;
+}
+
+.meta-item span {
+    color: #00CEEA;
+}
+
+/* טבלת שירים קטנה */
+.songs-mini-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.songs-mini-table th {
+    text-align: right;
+    color: #7a7a7a;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 10px;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.songs-mini-table td {
+    padding: 14px 10px;
+    color: #e0e0e0;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.song-title-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.music-icon {
+    color: #00CEEA;
+    opacity: 0.7;
+}
+
+.genre-label {
+    background-color: rgba(255,255,255,0.05);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #b3b3b3;
+}
+
+.details-loader {
+    text-align: center;
+    color: #00CEEA;
+    padding: 20px;
+}

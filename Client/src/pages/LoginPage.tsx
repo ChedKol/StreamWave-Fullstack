@@ -9,7 +9,7 @@ import { useNavigate, Link } from "react-router";
 import { Paths } from "../routes/paths";
 import { Music, Mail, Lock, Sparkles } from 'lucide-react';
 import '../style/LoginPage.css';
-
+import Swal from 'sweetalert2';
 const LoginPage = () => {
     const { setUser } = useAuthContext();
     const navigate = useNavigate();
@@ -35,9 +35,21 @@ const LoginPage = () => {
             setSession(token);
             setUser(user);
             navigate(Paths.home);
-        } catch (error) {
-            console.error(error);
-            setError('התחברות נכשלה');
+        } catch (error: any) {
+        console.error(error);
+        
+        // הצגת שגיאה מעוצבת
+        Swal.fire({
+            title: 'Login Failed',
+            text: 'Invalid email or password. Please try again.',
+            icon: 'error',
+            confirmButtonColor: '#00eeff',
+            background: '#1a1a1a',
+            color: '#fff',
+            customClass: {
+                popup: 'swal2-dark-custom' // אפשר להוסיף קלאס ייעודי ב-CSS לתיקונים אחרונים
+            }
+        });
         } finally {
             setIsLoading(false);
         }

@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Service.Services;
 namespace OurWebApi.Controllers
 {
     [Route("api/[controller]")]
@@ -67,6 +68,20 @@ namespace OurWebApi.Controllers
         {
             await _service.DeleteItem(id);
             return Ok();
+        }
+
+        [HttpPost("verify")]
+        public async Task<IActionResult> Verify([FromBody] VerifyDto verifyDto)
+        {
+            // קריאה ל-Service שבודק מול ה-DB ומעדכן את IsVerified ל-true
+            var isSuccess = await _service.Verify(verifyDto.Email, verifyDto.Code);
+
+            if (isSuccess)
+            {
+                return Ok(new { message = "החשבון אומת בהצלחה!" });
+            }
+
+            return BadRequest("קוד אימות שגוי או פג תוקף");
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Service.Dto
             public string ArtistName { get; set; }
             public string CoverArtistPath { get; set; }
             public byte[] ArrImage { get; set; }
+            public string About { get; set; }
         }
     }
 }

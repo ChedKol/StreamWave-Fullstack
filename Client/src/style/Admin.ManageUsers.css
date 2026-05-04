@@ -1,0 +1,185 @@
+.manage-users-container {
+    animation: fadeIn 0.4s ease-out;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page-header {
+    margin-bottom: 32px;
+}
+
+.header-text h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.header-text p {
+    color: #b3b3b3;
+    font-size: 15px;
+}
+
+/* עיצוב הטבלה */
+.table-wrapper {
+    background-color: #121212;
+    border-radius: 16px;
+    border: 1px solid #1a1a1a;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
+}
+
+.admin-table th {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 18px 24px;
+    color: #7a7a7a;
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.admin-table td {
+    padding: 16px 24px;
+    border-bottom: 1px solid #1a1a1a;
+    vertical-align: middle;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tr:hover td {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* תא משתמש */
+.user-info-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+.table-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.table-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a4a4a;
+}
+
+.user-name-text {
+    font-weight: 600;
+    color: white;
+}
+
+/* תא אימייל */
+.email-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #b3b3b3;
+    font-size: 14px;
+}
+
+/* באדג' סטטוס */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status-badge.admin {
+    background-color: rgba(0, 206, 234, 0.1);
+    color: #00CEEA;
+}
+
+.status-badge.user {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #b3b3b3;
+}
+
+/* כפתור מחיקה */
+.btn-delete {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    color: #ff4d4d;
+    border: 1px solid rgba(255, 77, 77, 0.2);
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+}
+
+.btn-delete:hover {
+    background-color: #ff4d4d;
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
+}
+
+.actions-column {
+    text-align: left;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* טעינה ושגיאות */
+.admin-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    gap: 16px;
+    color: #00CEEA;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.admin-error {
+    background-color: rgba(255, 77, 77, 0.1);
+    color: #ff4d4d;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 77, 77, 0.2);
+    text-align: center;
+    margin: 40px;
+}

@@ -14,5 +14,6 @@ namespace Service.Interfaces
         Task<UserDTO> AddItem(UserRegisterDTO item);
         Task UpdateItem(int id, UserUpdateDTO item);
         Task DeleteItem(int id);
+        Task<bool> Verify(string email, string code);
     }
 }
