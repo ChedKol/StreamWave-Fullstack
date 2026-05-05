@@ -1,0 +1,234 @@
+.manage-songs-container {
+    animation: fadeIn 0.4s ease-out;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Layout Grid */
+.admin-grid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+    .admin-grid { grid-template-columns: 1fr; }
+}
+
+/* Card Style */
+.admin-card {
+    background-color: #121212;
+    border: 1px solid #1a1a1a;
+    border-radius: 16px;
+    padding: 24px;
+    position: sticky;
+    top: 20px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    color: #00CEEA;
+}
+
+.card-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Form Styling */
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 13px;
+    color: #b3b3b3;
+    font-weight: 500;
+}
+
+.admin-form input:not([type="file"]), 
+.admin-form select {
+    background: #0a0a0a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.admin-form input:focus, 
+.admin-form select:focus {
+    border-color: #00CEEA;
+}
+
+.file-upload-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.file-input-wrapper label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #7a7a7a;
+    margin-bottom: 5px;
+}
+
+.file-input-wrapper input {
+    font-size: 11px;
+    color: #7a7a7a;
+    width: 100%;
+}
+
+/* Buttons */
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    flex: 2;
+    background-color: #00CEEA;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-secondary {
+    flex: 1;
+    background-color: transparent;
+    border: 1px solid #2a2a2a;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-primary:hover { transform: translateY(-2px); }
+
+/* Songs List Side */
+.songs-scroll-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.song-admin-item {
+    background-color: #121212;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s;
+}
+
+.song-admin-item:hover {
+    background-color: #1a1a1a;
+    border-color: #333;
+}
+
+.song-item-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.song-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.song-thumb-placeholder {
+    width: 50px;
+    height: 50px;
+    background: #0a0a0a;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.song-name {
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.artist-name {
+    color: #7a7a7a;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.genre-tag {
+    font-size: 10px;
+    background: rgba(0, 206, 234, 0.1);
+    color: #00CEEA;
+    padding: 2px 8px;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.item-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.icon-btn.edit { color: #7a7a7a; }
+.icon-btn.delete { color: #7a7a7a; }
+
+.icon-btn.edit:hover { background: rgba(255,255,255,0.05); color: #00CEEA; }
+.icon-btn.delete:hover { background: rgba(255, 77, 77, 0.1); color: #ff4d4d; }
+
+/* Scrollbar Styling */
+.songs-scroll-list::-webkit-scrollbar { width: 6px; }
+.songs-scroll-list::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 10px; }

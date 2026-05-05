@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from "../../auth/useAuthContext";
 import { getAllPlaylists, getPlaylistById, deletePlaylist } from "../../services/playlist.service";
 import type { Playlist, PlaylistDetails } from "../../types/playlist.types";
-import { Trash2, ChevronDown, ChevronUp, Music, User, Clock, Calendar, Hash } from "lucide-react";
+import { Trash2, ChevronDown, ChevronUp, Music, User, Calendar, Hash } from "lucide-react";
 import "../../style/Admin.ManagePlaylist.css";
 
 const ManagePlaylistsPage = () => {
