@@ -1,11 +1,4 @@
-#home-page-container {
-    background-color: #000000; /* שחור עמוק כמו בפיגמה */
-    color: white;
-    min-height: 100vh;
-    direction: rtl;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    padding: 2rem 3rem;
-}
+
 
 /* Header */
 .home-header {
@@ -22,20 +15,24 @@
     letter-spacing: -1px;
 }
 
-.subtitle-text { 
-    color: #a7a7a7; 
-    font-size: 1.1rem;
-    margin-top: 0.5rem; 
+.subtitle-text {
+    color: #a7a7a7;
+    font-size: clamp(0.95rem, 2vw, 1.2rem);
+    margin: 0;
 }
 
-/* Featured Banner */
 .featured-banner {
+
     position: relative;
-    height: 350px;
-    border-radius: 24px;
+
+    height: clamp(260px, 45vw, 420px);
+
+    border-radius: 28px;
+
     overflow: hidden;
+
     margin-bottom: 4rem;
-    cursor: pointer;
+
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
@@ -55,10 +52,16 @@
 }
 
 .banner-content {
+
     position: absolute;
-    bottom: 3rem;
-    right: 3rem;
-    left: 3rem;
+
+    bottom: clamp(1.5rem, 4vw, 3rem);
+
+    right: clamp(1.5rem, 4vw, 3rem);
+
+    left: clamp(1.5rem, 4vw, 3rem);
+
+    z-index: 2;
 }
 
 .trending-badge {
@@ -73,18 +76,26 @@
     margin-bottom: 1rem;
 }
 
-.banner-title { 
-    font-size: 4rem; 
+.banner-title {
+
+    font-size: clamp(2rem, 7vw, 5rem);
+
     font-weight: 900;
-    margin: 0 0 15px 0; 
+
     line-height: 1;
+
+    margin-bottom: 12px;
 }
 
-.banner-description { 
-    font-size: 1.25rem; 
-    color: #d1d1d1; 
-    margin-bottom: 2rem;
-    max-width: 600px;
+.banner-description {
+
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+
+    color: #d1d1d1;
+
+    max-width: 650px;
+
+    line-height: 1.5;
 }
 
 .play-now-btn {
@@ -128,26 +139,42 @@
 
 .icon-primary { color: #00CEEA; }
 
-/* Song Cards Grid */
 .cards-grid {
+
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 24px;
+
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(180px, 1fr)
+    );
+
+    gap: clamp(16px, 2vw, 28px);
 }
 
 .song-card-figma {
-    background-color: rgba(255, 255, 255, 0.05);
+
+    background-color: rgba(255,255,255,0.05);
+
     padding: 16px;
-    border-radius: 16px;
+
+    border-radius: 18px;
+
     transition: all 0.3s ease;
+
     cursor: pointer;
+
     border: 1px solid transparent;
+
+    backdrop-filter: blur(10px);
 }
 
-.song-card-figma:hover { 
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-8px);
-    border-color: rgba(0, 206, 234, 0.3);
+.song-card-figma:hover {
+
+    transform: translateY(-6px);
+
+    border-color: rgba(0,206,234,0.3);
+
+    background-color: rgba(255,255,255,0.08);
 }
 
 .image-wrapper img {
@@ -173,11 +200,16 @@
     margin-top: 6px; 
 }
 
-/* Artists Grid */
 .artists-grid {
+
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 32px;
+
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(140px, 1fr)
+    );
+
+    gap: clamp(20px, 3vw, 36px);
 }
 
 .artist-card-figma { 
@@ -189,14 +221,24 @@
 .artist-card-figma:hover { transform: scale(1.05); }
 
 .artist-image-wrapper img {
-    width: 150px;
-    height: 150px;
+
+    width: 100%;
+
+    max-width: 160px;
+
+    aspect-ratio: 1;
+
     border-radius: 50%;
+
     object-fit: cover;
-    margin-bottom: 16px;
+
+    margin-bottom: 14px;
+
     border: 4px solid transparent;
-    transition: border-color 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
 .artist-card-figma:hover img { border-color: #00CEEA; }
@@ -209,13 +251,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 #home-page-container {
-    background-color: #000000;
+    background-color: #000;
     color: white;
     min-height: 100vh;
     direction: rtl;
-    font-family: 'Inter', sans-serif; /* פונט עגול ומודרני */
-    padding: 2rem 3rem;
-    margin-right: 260px; /* זה ימנע מהסיידבר להסתיר את התוכן */
+    font-family: 'Inter', sans-serif;
+
+    padding: clamp(1rem, 3vw, 3rem);
+
+    margin-right: 260px;
+
+    width: calc(100% - 260px);
+
+    overflow-x: hidden;
+
+    transition: all 0.3s ease;
 }
 
 /* הסרת כפתור ההתנתקות שנותר */
@@ -223,30 +273,25 @@
     display: none !important;
 }
 
-/* Header תיקון ה- */
 .home-header {
     display: flex;
-    flex-direction: column; /* מסדר את הטקסט נכון */
+    flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 2.5rem;
-    margin-top: 1rem;
+
+    gap: 10px;
+
+    margin-bottom: clamp(2rem, 4vw, 4rem);
 }
 
-.greeting-text { 
-    font-size: 2.8rem; 
-    font-weight: 800;
-    letter-spacing: -1.5px;
+.greeting-text {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -2px;
     margin: 0;
+    line-height: 1.1;
 }
 
-/* Featured Banner - תיקון המיקום של הטקסט */
-.featured-banner {
-    position: relative;
-    height: 380px;
-    border-radius: 28px;
-    overflow: hidden;
-    margin-bottom: 4rem;
-}
+
 
 .banner-content {
     position: absolute;
@@ -255,10 +300,63 @@
     text-align: right;
 }
 
-.banner-title { 
-    font-size: 4.5rem; 
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 10px;
+
+@media (max-width: 900px) {
+
+    #home-page-container {
+
+        margin-right: 90px;
+
+        width: calc(100% - 90px);
+
+        padding: 1rem;
+    }
+
+    .banner-description {
+
+        display: none;
+    }
+
+    .cards-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .artists-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+@media (max-width: 600px) {
+
+    #home-page-container {
+
+        margin-right: 0;
+
+        width: 100%;
+
+        padding: 1rem;
+    }
+
+    .featured-banner {
+
+        border-radius: 18px;
+    }
+
+
+    .cards-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .artists-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .banner-title {
+
+        font-size: 2rem;
+    }
+}

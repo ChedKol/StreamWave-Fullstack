@@ -26,7 +26,6 @@ const ArtistPage: React.FC = () => {
     const [userPlaylists, setUserPlaylists] = useState<PlaylistDetails[]>([]);
     const [loadingPlaylists, setLoadingPlaylists] = useState(false);
     
-    // state פשוט למניעת לחיצות כפולות בזמן עדכון יחיד
     const [isUpdating, setIsUpdating] = useState(false);
 
     useEffect(() => {
@@ -81,19 +80,22 @@ const ArtistPage: React.FC = () => {
 
         try {
             if (isSongInPlaylist) {
-                // אם השיר קיים - מסירים
                 await removeSongFromPlaylist(playlist.id, selectedSong.id);
+                // עדכון ה-state המקומי כדי שה-V ייעלם מיד
+                setUserPlaylists(prev => prev.map(p => 
+                    p.id === playlist.id 
+                    ? { ...p, songs: p.songs.filter(s => String(s.id) !== String(selectedSong.id)) } 
+                    : p
+                ));
             } else {
-                // אם השיר לא קיים - מוסיפים
                 await addSongToPlaylist(playlist.id, selectedSong.id);
+                // עדכון ה-state המקומי כדי שה-V יופיע מיד
+                setUserPlaylists(prev => prev.map(p => 
+                    p.id === playlist.id 
+                    ? { ...p, songs: [...p.songs, selectedSong] } 
+                    : p
+                ));
             }
-            
-            // סגירת המודאל מיד לאחר הצלחה כדי למנוע בלבול ופעולות כפולות
-            setIsModalOpen(false);
-            
-            // אופציונלי: הודעת אישור קטנה
-            console.log(isSongInPlaylist ? "השיר הוסר" : "השיר נוסף");
-
         } catch (err) {
             console.error("Failed to update playlist:", err);
             alert("חלה שגיאה בעדכון הפלייליסט.");
@@ -107,7 +109,6 @@ const ArtistPage: React.FC = () => {
 
     return (
         <div id="artist-page-container">
-            {/* Hero & Actions (ללא שינוי) */}
             <header className="artist-hero">
                 {artist.arrImage && <img src={`data:image/jpeg;base64,${artist.arrImage}`} className="hero-bg" alt="" />}
                 <div className="hero-overlay"></div>
@@ -122,7 +123,6 @@ const ArtistPage: React.FC = () => {
                 <button className="follow-outline-btn">Follow</button>
             </section>
 
-            {/* רשימת שירים */}
             <section className="artist-songs-section">
                 <div className="songs-table">
                     <div className="table-header">
@@ -149,47 +149,52 @@ const ArtistPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* מודאל פלייליסטים */}
             {isModalOpen && (
                 <div className="playlist-modal-overlay" onClick={() => setIsModalOpen(false)}>
                     <div className="playlist-modal" onClick={e => e.stopPropagation()}>
                         <div className="modal-header">
-                            <h3>הוספה לפלייליסט</h3>
+                            <div>
+                                <h3>הוספה לפלייליסט</h3>
+                                <p className="modal-subtitle">עבור: <strong>{selectedSong?.songName}</strong></p>
+                            </div>
                             <button className="close-modal" onClick={() => setIsModalOpen(false)}><X size={24}/></button>
                         </div>
                         <div className="modal-content">
-                            <p>בחרי פלייליסט עבור: <strong>{selectedSong?.songName}</strong></p>
-                            
                             {loadingPlaylists ? (
                                 <div className="loading-state">טוען פלייליסטים...</div>
                             ) : (
-                                <div className="playlist-list">
-                                    {userPlaylists.map(playlist => {
-                                        // בדיקה אם השיר כבר קיים בפלייליסט הספציפי הזה
-                                        const isAlreadyIn = playlist.songs.some(s => String(s.id) === String(selectedSong?.id));
+                                <>
+                                    <div className="playlist-list">
+                                        {userPlaylists.map(playlist => {
+                                            const isAlreadyIn = playlist.songs.some(s => String(s.id) === String(selectedSong?.id));
 
-                                        return (
-                                            <div 
-                                                key={playlist.id} 
-                                                // אם השיר קיים, נוסיף קלאס CSS מיוחד (למשל עם רקע מעט שונה או בורדר ירוק)
-                                                className={`playlist-option ${isAlreadyIn ? 'is-added' : ''}`}
-                                                onClick={() => toggleSongInPlaylist(playlist)}
-                                                style={{ 
-                                                    cursor: isUpdating ? 'wait' : 'pointer',
-                                                    border: isAlreadyIn ? '1px solid #1db954' : '1px solid transparent'
-                                                }}
-                                            >
-                                                <img src={playlist.arrCover ? `data:image/jpeg;base64,${playlist.arrCover}` : '/default-playlist.png'} alt="" />
-                                                <div className="playlist-info">
-                                                    <h4>{playlist.playlistName}</h4>
-                                                    <p>{playlist.songs.length} שירים</p>
+                                            return (
+                                                <div 
+                                                    key={playlist.id} 
+                                                    className={`playlist-option ${isAlreadyIn ? 'is-added' : ''}`}
+                                                    onClick={() => toggleSongInPlaylist(playlist)}
+                                                    style={{ cursor: isUpdating ? 'wait' : 'pointer' }}
+                                                >
+                                                    <img src={playlist.arrCover ? `data:image/jpeg;base64,${playlist.arrCover}` : '/default-playlist.png'} alt="" />
+                                                    <div className="playlist-info">
+                                                        <h4>{playlist.playlistName}</h4>
+                                                        <p>{playlist.songs.length} שירים</p>
+                                                    </div>
+                                                    <div className={`custom-checkbox ${isAlreadyIn ? 'checked' : ''}`}>
+                                                        {isAlreadyIn && <Check size={14} />}
+                                                    </div>
                                                 </div>
-                                                {/* חיווי וי ירוק אם השיר כבר קיים */}
-                                                {isAlreadyIn && <Check size={20} color="#1db954" className="check-icon" />}
-                                            </div>
-                                        );
-                                    })}
-                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                    <button 
+                                        className="confirm-selection-btn" 
+                                        onClick={() => setIsModalOpen(false)}
+                                        disabled={isUpdating}
+                                    >
+                                        {isUpdating ? 'מעדכן...' : 'סיום'}
+                                    </button>
+                                </>
                             )}
                         </div>
                     </div>

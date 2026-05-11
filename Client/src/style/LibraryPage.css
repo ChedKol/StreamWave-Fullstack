@@ -1,120 +1,169 @@
 .library-page {
-    padding: 40px;
-    color: white;
-    background-color: #121212;
+    padding: 40px 60px;
+    background: radial-gradient(circle at top, #181818 0%, #000 60%);
     min-height: 100vh;
+    color: white;
+    margin-right: 260px;
 }
 
+/* HEADER */
 .library-header h1 {
-    font-size: 32px;
-    margin-bottom: 24px;
+    font-size: 2.3rem;
+    font-weight: 800;
+    margin-bottom: 6px;
 }
 
-.playlists-grid {
+.library-header p {
+    color: #b3b3b3;
+    font-size: 0.95rem;
+}
+
+/* GRID */
+.library-grid {
+    margin-top: 30px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 22px;
 }
 
+/* CARD */
 .playlist-card {
     background: #181818;
-    padding: 15px;
-    border-radius: 8px;
+    border-radius: 16px;
+    padding: 14px;
+    position: relative;
     cursor: pointer;
+    transition: 0.25s ease;
 }
 
 .playlist-card:hover {
-    background: #282828;
+    background: #242424;
+    transform: translateY(-6px);
 }
 
-.empty-library-message {
-    text-align: center;
-    margin-top: 50px;
-}
-
-.create-btn-link {
-    background: white;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 15px;
-}
-.library-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #333;
-    margin-bottom: 30px;
-}
-
-.create-playlist-btn {
-    background-color: #1db954; /* ירוק ספוטיפיי */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 500px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.create-playlist-btn:hover {
-    transform: scale(1.05);
-}
-/* מיכל התמונות - שומר על ריבוע מושלם */
-.card-image {
+/* IMAGE */
+.playlist-image {
+    position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1; /* הופך את המיכל לריבוע ללא קשר לגודל התמונה */
-    margin-bottom: 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-    overflow: hidden; /* מונע מהתמונה לצאת מהגבולות */
-    border-radius: 4px;
-    background-color: #282828;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.playlist-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* HOVER PLAY BUTTON */
+.playlist-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    transition: 0.2s ease;
 }
 
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* חותך את התמונה שתתאים לריבוע מבלי להימרח */
+.playlist-card:hover .playlist-overlay {
+    opacity: 1;
 }
 
-.placeholder-icon {
-    font-size: 48px;
-}
-
-/* סידור הטקסט מתחת לתמונה */
-.card-info h3 {
-    font-size: 16px;
-    margin: 0 0 8px 0;
-    white-space: nowrap; /* מונע מהטקסט לרדת שורה ומחרב את העיצוב */
-    overflow: hidden;
-    text-overflow: ellipsis; /* מוסיף ... אם השם ארוך מדי */
-}
-
-.card-info p {
-    font-size: 14px;
-    color: #b3b3b3;
-    margin: 0;
-}
-
-/* עיצוב הכרטיס כולו */
-.playlist-card {
-    background: #181818;
-    padding: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+.playlist-overlay button {
+    background: #00CEEA;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
-.playlist-card:hover {
-    background: #282828;
+/* INFO */
+.playlist-info {
+    margin-top: 10px;
+}
+
+.playlist-info h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-info p {
+    color: #b3b3b3;
+    font-size: 0.85rem;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.6);
+    border: none;
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.playlist-card:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background: rgba(255,0,0,0.7);
+}
+
+/* EMPTY STATE */
+.empty-library {
+    margin-top: 80px;
+    text-align: center;
+    color: #b3b3b3;
+}
+
+.empty-library h2 {
+    margin-top: 10px;
+    color: white;
+}
+
+/* LOADING */
+.library-loading {
+    color: white;
+    padding: 60px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .library-page {
+        margin-right: 0;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .library-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .library-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .library-header h1 {
+        font-size: 1.8rem;
+    }
 }

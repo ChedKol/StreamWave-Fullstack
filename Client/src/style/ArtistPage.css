@@ -89,14 +89,14 @@
     text-transform: uppercase;
 }
 
-/* Table - Updated for 4 columns */
+/* Table */
 .artist-songs-section { padding: 0 3rem 3rem 3rem; }
 
 .songs-table { width: 100%; }
 
 .table-header {
     display: grid;
-    grid-template-columns: 50px 1fr 150px 80px; /* הוספת עמודה רביעית */
+    grid-template-columns: 50px 1fr 150px 80px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding: 10px 16px;
     color: #b3b3b3;
@@ -105,7 +105,7 @@
 
 .song-row-item {
     display: grid;
-    grid-template-columns: 50px 1fr 150px 80px; /* הוספת עמודה רביעית */
+    grid-template-columns: 50px 1fr 150px 80px;
     padding: 12px 16px;
     align-items: center;
     border-radius: 8px;
@@ -115,7 +115,6 @@
 
 .song-row-item:hover { background-color: rgba(255,255,255,0.1); }
 
-/* כפתור הוספה לפלייליסט בתוך השורה */
 .add-to-playlist-btn-circle {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -128,11 +127,11 @@
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s;
-    opacity: 0; /* מוסתר כברירת מחדל */
+    opacity: 0;
 }
 
 .song-row-item:hover .add-to-playlist-btn-circle {
-    opacity: 1; /* מופיע רק ב-Hover על השורה */
+    opacity: 1;
 }
 
 .add-to-playlist-btn-circle:hover {
@@ -156,7 +155,7 @@
 
 .col-plays { color: #b3b3b3; }
 
-/* Modal Styles (Identical to SearchPage for consistency) */
+/* Modal Styles */
 .playlist-modal-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -174,8 +173,35 @@
     width: 90%;
     max-width: 450px;
     max-height: 80vh;
-    overflow-y: auto;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.modal-subtitle {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    margin-top: 5px;
+}
+
+.close-modal {
+    background: transparent;
+    border: none;
+    color: #b3b3b3;
+    cursor: pointer;
+}
+
+.playlist-list {
+    overflow-y: auto;
+    padding-right: 5px;
+    flex-grow: 1;
 }
 
 .playlist-option {
@@ -186,13 +212,17 @@
     background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     margin-bottom: 8px;
-    cursor: pointer;
     transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.playlist-option:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .playlist-option.is-added {
-    border: 1px solid #28a745;
-    background: rgba(40, 167, 69, 0.1);
+    background-color: rgba(29, 185, 84, 0.1);
+    border-color: rgba(29, 185, 84, 0.5);
 }
 
 .playlist-option img {
@@ -202,17 +232,56 @@
     object-fit: cover;
 }
 
+.playlist-info h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.playlist-info p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #b3b3b3;
+}
+
+/* Checkbox Style */
+.custom-checkbox {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #727272;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto; /* דוחף לשמאל ב-RTL */
+    transition: all 0.2s;
+}
+
+.custom-checkbox.checked {
+    background-color: #1db954;
+    border-color: #1db954;
+    color: white;
+}
+
 .confirm-selection-btn {
     width: 100%;
     background: #00CEEA;
     color: black;
     border: none;
-    padding: 12px;
+    padding: 14px;
     border-radius: 50px;
     font-weight: 700;
+    font-size: 1rem;
     margin-top: 15px;
     cursor: pointer;
+    transition: all 0.2s;
 }
-.playlist-option.is-added {
-    background-color: rgba(29, 185, 84, 0.1); /* ירוק שקוף עדין */
+
+.confirm-selection-btn:hover:not(:disabled) {
+    transform: scale(1.02);
+    background: #00e5ff;
+}
+
+.confirm-selection-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }

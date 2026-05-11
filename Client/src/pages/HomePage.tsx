@@ -28,6 +28,24 @@ const HomePage = () => {
         if (hour < 18) return 'צהריים טובים';
         return 'ערב טוב';
     };
+    const getSeasonTitle = () => {
+
+    const month = new Date().getMonth();
+
+    if (month >= 2 && month <= 4) {
+        return 'Spring Vibes';
+    }
+
+    if (month >= 5 && month <= 7) {
+        return 'Summer Vibes';
+    }
+
+    if (month >= 8 && month <= 10) {
+        return 'Autumn Vibes';
+    }
+
+    return 'Winter Vibes';
+};
 
     useEffect(() => {
         const fetchHomeData = async () => {
@@ -80,7 +98,9 @@ const HomePage = () => {
                         <Flame size={20} className="text-primary" />
                         <span>Trending Now</span>
                     </div>
-                    <h2 className="banner-title">Summer Vibes 2026</h2>
+                    <h2 className="banner-title">
+                        {getSeasonTitle()} {new Date().getFullYear()}
+                    </h2>
                     <p className="banner-description">הטרקים הכי חמים ששורפים את הפלייליסט שלך עכשיו</p>
                 </div>
             </div>
