@@ -1,5 +1,5 @@
 import axiosInstance from "./axios"
-import type { Artist } from "../types/artist.types"
+import type { Artist, ArtistDetails } from "../types/artist.types"
 
 export const getArtists = async (): Promise<Artist[]> => {
     const response = await axiosInstance.get('Artist')
@@ -16,3 +16,10 @@ export const updateArtist = async (id: number, formData: FormData): Promise<void
 export const deleteArtist = async (id: number): Promise<void> => {
     await axiosInstance.delete(`Artist/${id}`)
 }
+
+
+export const getArtistById = async (id: number): Promise<ArtistDetails> => {
+    // שימי לב אם לא שכחת את ה-id ב-URL או שיש שגיאת כתיב ב-Artist
+    const response = await axiosInstance.get<ArtistDetails>(`Artist/${id}`);
+    return response.data;
+};

@@ -1,5 +1,4 @@
-﻿using Service.Dto.Service.Dto;
-using Service.Dto;
+﻿using Service.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;

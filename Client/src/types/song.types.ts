@@ -5,5 +5,5 @@ export type Song = {
     artistName: string;
     duration: string;
     arrImage: string | null;
-    artistId: number; // נצטרך את זה לעריכה
+    artistId: number| null;  // נצטרך את זה לעריכה
 }

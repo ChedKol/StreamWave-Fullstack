@@ -30,11 +30,19 @@ namespace Repository.Repositories
                 .Include(a => a.Songs.Where(s => s.Status == true))
                 .ToListAsync();
         }
+        //public async Task<Artist> GetById(int id)
+        //{
+        //    return await _context.Artists
+        //        .Include(a => a.Songs.Where(s => s.Status == true))
+        //        .FirstOrDefaultAsync(x => x.Id == id && x.Status == true);
+        //}
         public async Task<Artist> GetById(int id)
         {
-            return await _context.Artists
+            var artist = await _context.Artists
                 .Include(a => a.Songs.Where(s => s.Status == true))
                 .FirstOrDefaultAsync(x => x.Id == id && x.Status == true);
+
+            return artist; 
         }
         public async Task DeleteItem(int id)
         {

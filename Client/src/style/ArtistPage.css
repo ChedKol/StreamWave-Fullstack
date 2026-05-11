@@ -1,0 +1,218 @@
+#artist-page-container {
+    background-color: #121212;
+    color: white;
+    min-height: 100vh;
+    direction: rtl;
+    font-family: 'Inter', sans-serif;
+    margin-right: 260px;
+}
+
+/* Hero Section */
+.artist-hero {
+    position: relative;
+    height: 40vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem 3rem;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent, rgba(18, 18, 18, 0.9));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.verified-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.artist-main-name {
+    font-size: 6rem;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: -2px;
+}
+
+/* Actions */
+.artist-actions {
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.main-play-btn {
+    background-color: #00CEEA;
+    border: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.main-play-btn:hover { transform: scale(1.05); }
+
+.follow-outline-btn {
+    background: transparent;
+    border: 1px solid #727272;
+    color: white;
+    padding: 8px 24px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Table - Updated for 4 columns */
+.artist-songs-section { padding: 0 3rem 3rem 3rem; }
+
+.songs-table { width: 100%; }
+
+.table-header {
+    display: grid;
+    grid-template-columns: 50px 1fr 150px 80px; /* הוספת עמודה רביעית */
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 10px 16px;
+    color: #b3b3b3;
+    font-size: 0.85rem;
+}
+
+.song-row-item {
+    display: grid;
+    grid-template-columns: 50px 1fr 150px 80px; /* הוספת עמודה רביעית */
+    padding: 12px 16px;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.song-row-item:hover { background-color: rgba(255,255,255,0.1); }
+
+/* כפתור הוספה לפלייליסט בתוך השורה */
+.add-to-playlist-btn-circle {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #b3b3b3;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0; /* מוסתר כברירת מחדל */
+}
+
+.song-row-item:hover .add-to-playlist-btn-circle {
+    opacity: 1; /* מופיע רק ב-Hover על השורה */
+}
+
+.add-to-playlist-btn-circle:hover {
+    border-color: #00CEEA;
+    color: white;
+    transform: scale(1.1);
+    background: rgba(0, 206, 234, 0.1);
+}
+
+.col-title-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.col-title-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+}
+
+.col-plays { color: #b3b3b3; }
+
+/* Modal Styles (Identical to SearchPage for consistency) */
+.playlist-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.playlist-modal {
+    background: #1a1a2e;
+    border-radius: 16px;
+    padding: 24px;
+    width: 90%;
+    max-width: 450px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.playlist-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.playlist-option.is-added {
+    border: 1px solid #28a745;
+    background: rgba(40, 167, 69, 0.1);
+}
+
+.playlist-option img {
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.confirm-selection-btn {
+    width: 100%;
+    background: #00CEEA;
+    color: black;
+    border: none;
+    padding: 12px;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.playlist-option.is-added {
+    background-color: rgba(29, 185, 84, 0.1); /* ירוק שקוף עדין */
+}

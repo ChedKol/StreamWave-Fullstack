@@ -15,6 +15,7 @@ namespace Repository.Entities
         [ForeignKey("Artist")]
         public int ArtistId { get; set; }
         public int CountStream { get; set; }
+        public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
         public eGenere Genere { get; set; }
         public string? CoverSongPath { get; set; }
         public string? SongPath { get; set; }

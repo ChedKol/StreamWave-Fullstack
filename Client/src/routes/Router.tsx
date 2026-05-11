@@ -18,6 +18,7 @@ import PlaylistDetailsPage from "../pages/PlaylistDetailsPage";
 import { Sidebar } from "../pages/Sidebar"; // 2. הוספתי ייבוא לסרגל
 import LibraryPage from "../pages/LibraryPage";
 import ManagePlaylists from "../pages/admin/ManagePlaylists";
+import ArtistPage from "../pages/ArtistPage";
 
 // 3. יצרתי קומפוננטת Layout חדשה שמכילה את הסרגל
 const MainLayout = () => (
@@ -67,6 +68,10 @@ const Router = () => {
                     path: '/playlist/:id',
                     element: <PlaylistDetailsPage />
                 },
+                {
+                    path: '/artist/:id',
+                    element: <AuthGuard><ArtistPage /></AuthGuard>
+                }
             ]
         },
         // --- סוף השינוי המרכזי ---

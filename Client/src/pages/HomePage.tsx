@@ -1,24 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// ייבוא של Redux
 import { useSelector } from "react-redux"; 
 import { type RootState } from "../store/store";
-// ייבוא ה-Context המקורי (נשמר לצורך ה-ID ב-useEffect)
 import { useAuthContext } from "../auth/useAuthContext";
 import { getRecommendedSongs, getFavoriteArtists } from "../services/song.service";
 import type { Song } from "../types/song.types";
 import { TrendingUp, Sparkles, Flame } from 'lucide-react';
 import "../style/HomePage.css"; 
 
-
 const HomePage = () => {
-    // שליפת המשתמש מה-Redux Store
     const reduxUser = useSelector((state: RootState) => state.auth.user);
-    
-    // שימוש ב-Context רק לצורך ה-ID כדי להריץ את ה-API
     const { user } = useAuthContext();
-    
     const navigate = useNavigate();
+    
     const [recommendedSongs, setRecommendedSongs] = useState<Song[]>([]);
     const [favoriteArtists, setFavoriteArtists] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
@@ -37,7 +31,6 @@ const HomePage = () => {
 
     useEffect(() => {
         const fetchHomeData = async () => {
-            // משתמשים ב-ID מה-Context כדי למשוך נתונים
             if (user?.userId) {
                 try {
                     setLoading(true);
@@ -62,9 +55,12 @@ const HomePage = () => {
         navigate(`/now-playing/${id}`);
     };
 
+    const handleArtistClick = (id: number) => {
+        navigate(`/artist/${id}`);
+    };
+
     return (
         <div id="home-page-container">
-            {/* Header Section - כאן אנחנו משתמשים במידע מ-Redux */}
             <header className="home-header">
                 <h1 className="greeting-text">
                     {getGreeting()}, {reduxUser?.userName || 'אורח'}!
@@ -72,7 +68,6 @@ const HomePage = () => {
                 <p className="subtitle-text">מוכנה להיכנס לקצב עם האמנים האהובים עליך?</p>
             </header>
 
-            {/* Featured Banner */}
             <div className="featured-banner">
                 <img
                     src="https://images.unsplash.com/photo-1762788109986-8dcd959eeccb?q=80&w=1080"
@@ -122,7 +117,11 @@ const HomePage = () => {
                         </div>
                         <div className="artists-grid">
                             {favoriteArtists.map(artist => (
-                                <div key={artist.id} className="artist-card-figma">
+                                <div 
+                                    key={artist.id} 
+                                    className="artist-card-figma" 
+                                    onClick={() => handleArtistClick(artist.id)}
+                                >
                                     <div className="artist-image-wrapper">
                                         <img src={getImageSrc(artist.arrImage)} alt={artist.artistName} />
                                     </div>

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Repository.Entities;
 using Service.Dto;
-using Service.Dto.Service.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,10 +73,8 @@ namespace Service.Services
 
             // Artist -> ArtistDetailsDTO (GET by id)
             CreateMap<Artist, ArtistDetailsDTO>()
-                .ForMember(dest => dest.ArrImage, opt => opt.MapFrom(src =>
-                    File.Exists(Path.Combine(path, src.CoverArtistPath ?? ""))
-                        ? File.ReadAllBytes(Path.Combine(path, src.CoverArtistPath))
-                        : null));
+                .IncludeBase<Artist, ArtistDTO>() // יורש את המיפוי של התמונה והשדות הבסיסיים
+                .ForMember(dest => dest.Songs, opt => opt.MapFrom(src => src.Songs)); // מבטיח שרשימת השירים תמופה
 
             // ArtistCreateDTO -> Artist (POST/PUT)
             CreateMap<ArtistCreateDTO, Artist>()

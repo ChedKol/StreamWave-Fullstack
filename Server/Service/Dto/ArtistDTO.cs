@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Http;
 namespace Service.Dto
-{
-    namespace Service.Dto
     {
         public class ArtistDTO
         {
@@ -17,4 +15,3 @@ namespace Service.Dto
             public string About { get; set; }
         }
     }
-}
